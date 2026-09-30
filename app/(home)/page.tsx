@@ -2,23 +2,14 @@ import Link from 'next/link';
 
 export default function HomePage() {
   return (
-    <main className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden px-6 py-20">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_20%,rgba(120,119,198,0.16),transparent_42%),radial-gradient(circle_at_80%_80%,rgba(56,189,248,0.10),transparent_32%)]"
-      />
+    <main className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden bg-black px-6 py-20 text-white">
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center text-center">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-fd-border bg-fd-card/70 px-4 py-2 text-sm text-fd-muted-foreground backdrop-blur">
-          <span aria-hidden="true">🕶️</span>
-          <span>The forge got bigger.</span>
-        </div>
-
         <h1 className="max-w-4xl text-balance text-5xl font-semibold tracking-tight sm:text-6xl md:text-7xl">
           Meet <span className="font-antam font-medium">AntamScript</span>
         </h1>
 
-        <p className="mt-6 max-w-3xl text-balance text-lg leading-8 text-fd-muted-foreground sm:text-xl">
-          Basically ForgeScript, but <strong className="text-fd-foreground">B I G</strong>.
+        <p className="mt-6 max-w-3xl text-balance text-lg leading-8 text-white sm:text-xl">
+          Basically ForgeScript, but <strong className="text-white">B I G</strong>.
           69 times more powerful, maaaaaan das ist crazy!
         </p>
 
@@ -30,11 +21,11 @@ export default function HomePage() {
         <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
           <Link
             href="/docs"
-            className="inline-flex h-11 items-center justify-center rounded-xl bg-fd-foreground px-6 text-sm font-medium text-fd-background transition-opacity hover:opacity-90"
+            className="inline-flex h-11 items-center justify-center rounded-xl bg-white px-6 text-sm font-medium text-black transition-opacity hover:opacity-80"
           >
             Read the docs
           </Link>
-          <span className="inline-flex h-11 items-center justify-center rounded-xl border border-fd-border px-6 text-sm font-medium text-fd-muted-foreground">
+          <span className="inline-flex h-11 items-center justify-center rounded-xl border border-white px-6 text-sm font-medium text-fd-muted-foreground">
             Coming soon 😏
           </span>
         </div>
@@ -47,7 +38,7 @@ export default function HomePage() {
           ].map(([icon, title, description]) => (
             <div
               key={title}
-              className="rounded-2xl border border-fd-border bg-fd-card/70 p-5 backdrop-blur"
+              className="rounded-2xl border border-fd-border bg-black p-5"
             >
               <div className="text-xl" aria-hidden="true">
                 {icon}
