@@ -3,16 +3,8 @@ import Link from 'next/link';
 export default function HomePage() {
   return (
     <main className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden px-6 py-20">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_20%,rgba(120,119,198,0.16),transparent_42%),radial-gradient(circle_at_80%_80%,rgba(56,189,248,0.10),transparent_32%)]"
-      />
-      <div className="mx-auto flex w-full max-w-5xl flex-col items-center text-center">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-fd-border bg-fd-card/70 px-4 py-2 text-sm text-fd-muted-foreground backdrop-blur">
-          <span aria-hidden="true">🕶️</span>
-          <span>The forge got bigger.</span>
-        </div>
 
+      <div className="mx-auto flex w-full max-w-5xl flex-col items-center text-center">
         <h1 className="max-w-4xl text-balance text-5xl font-semibold tracking-tight sm:text-6xl md:text-7xl">
           Meet <span className="font-antam font-medium">AntamScript</span>
         </h1>
