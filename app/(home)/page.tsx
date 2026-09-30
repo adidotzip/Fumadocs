@@ -14,7 +14,7 @@ export default function HomePage() {
         </div>
 
         <h1 className="max-w-4xl text-balance text-5xl font-semibold tracking-tight sm:text-6xl md:text-7xl">
-          Meet <span className="font-extrabold">AntamScript</span>
+          Meet <span className="font-antam font-medium">AntamScript</span>
         </h1>
 
         <p className="mt-6 max-w-3xl text-balance text-lg leading-8 text-fd-muted-foreground sm:text-xl">
