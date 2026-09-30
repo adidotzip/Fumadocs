@@ -25,26 +25,23 @@ export default function HomePage() {
           >
             Read the docs
           </Link>
-          <span className="inline-flex h-11 items-center justify-center rounded-xl border border-white px-6 text-sm font-medium text-fd-muted-foreground">
+          <span className="inline-flex h-11 items-center justify-center rounded-xl border border-white px-6 text-sm font-medium text-white">
             Coming soon
           </span>
         </div>
 
         <div className="mt-16 grid w-full max-w-3xl gap-3 text-left sm:grid-cols-3">
           {[
-            ['', 'Beyond forging', 'More than a toolchain. A whole way to build.'],
-            ['', 'Big by design', 'Designed to leave tiny thinking at the door.'],
-            ['', 'Antam mode', 'Sharp syntax, serious power, zero apology.'],
-          ].map(([icon, title, description]) => (
+            ['Beyond forging', 'More than a toolchain. A whole way to build.'],
+            ['Big by design', 'Designed to leave tiny thinking at the door.'],
+            ['Antam mode', 'Sharp syntax, serious power, zero apology.'],
+          ].map(([title, description]) => (
             <div
               key={title}
               className="rounded-2xl border border-white bg-black p-5"
             >
-              <div className="text-xl" aria-hidden="true">
-                {icon}
-              </div>
               <h2 className="mt-4 text-sm font-semibold">{title}</h2>
-              <p className="mt-2 text-sm leading-6 text-fd-muted-foreground">{description}</p>
+              <p className="mt-2 text-sm leading-6 text-white">{description}</p>
             </div>
           ))}
         </div>
