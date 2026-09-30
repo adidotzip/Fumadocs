@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { DotPattern } from '@/components/ui/dot-pattern';
 import { FiArrowRight } from 'react-icons/fi';
+import { KineticText } from '@/components/ui/kinetic-text';
 
 export default function HomePage() {
   return (
@@ -9,7 +10,7 @@ export default function HomePage() {
 
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center text-center">
         <h1 className="max-w-4xl text-balance text-5xl font-semibold tracking-tight sm:text-6xl md:text-7xl">
-          Meet <span className="font-antam font-medium">AntamScript</span>
+          Meet <KineticText text="AntamScript" as="span" className="font-antam font-medium" />
         </h1>
 
         <p className="mt-6 max-w-3xl text-balance text-lg leading-8 text-fd-muted-foreground sm:text-xl">
