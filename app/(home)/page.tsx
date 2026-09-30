@@ -13,8 +13,8 @@ export default function HomePage() {
           69 times more powerful, maaaaaan das ist crazy!
         </p>
 
-        <p className="mt-3 max-w-2xl text-base leading-7 text-fd-muted-foreground">
-          Think beyond forging. Think <span className="font-semibold text-fd-foreground">Antam</span>.
+        <p className="mt-3 max-w-2xl text-base leading-7 text-white">
+          Think beyond forging. Think <span className="font-semibold text-white">Antam</span>.
           A language built for ideas that refuse to stay small.
         </p>
 
@@ -26,19 +26,19 @@ export default function HomePage() {
             Read the docs
           </Link>
           <span className="inline-flex h-11 items-center justify-center rounded-xl border border-white px-6 text-sm font-medium text-fd-muted-foreground">
-            Coming soon 😏
+            Coming soon
           </span>
         </div>
 
         <div className="mt-16 grid w-full max-w-3xl gap-3 text-left sm:grid-cols-3">
           {[
-            ['⚒️', 'Beyond forging', 'More than a toolchain. A whole way to build.'],
-            ['📦', 'Big by design', 'Designed to leave tiny thinking at the door.'],
-            ['🕶️', 'Antam mode', 'Sharp syntax, serious power, zero apology.'],
+            ['', 'Beyond forging', 'More than a toolchain. A whole way to build.'],
+            ['', 'Big by design', 'Designed to leave tiny thinking at the door.'],
+            ['', 'Antam mode', 'Sharp syntax, serious power, zero apology.'],
           ].map(([icon, title, description]) => (
             <div
               key={title}
-              className="rounded-2xl border border-fd-border bg-black p-5"
+              className="rounded-2xl border border-white bg-black p-5"
             >
               <div className="text-xl" aria-hidden="true">
                 {icon}
