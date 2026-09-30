@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { FiArrowRight } from 'react-icons/fi';
 
 export default function HomePage() {
   return (
@@ -22,9 +23,10 @@ export default function HomePage() {
         <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
           <Link
             href="/docs"
-            className="inline-flex h-11 items-center justify-center rounded-xl bg-fd-foreground px-6 text-sm font-medium text-fd-background transition-opacity hover:opacity-90"
+            className="group inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-fd-foreground px-6 text-sm font-medium text-fd-background transition-opacity hover:opacity-90"
           >
             Read the docs
+            <FiArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
           </Link>
           <span className="inline-flex h-11 items-center justify-center rounded-xl border border-fd-border px-6 text-sm font-medium text-fd-muted-foreground">
             Coming soon 😏
