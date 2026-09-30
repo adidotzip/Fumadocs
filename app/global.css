@@ -30,6 +30,25 @@ main {
   animation: page-fade-in 220ms ease-out both;
 }
 
+@keyframes dot-pattern-glow {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.85;
+    transform: scale(1.7);
+  }
+}
+
+.dot-pattern-glow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dot-pattern-glow 3s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   main {
     animation: none;
