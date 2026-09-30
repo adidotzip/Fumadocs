@@ -1,13 +1,45 @@
 ---
-title: Hello World
-description: Your first document
+title: AntamScript
+description: Learn AntamScript and get the project running locally.
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+# AntamScript
 
-## What is Next?
+**ForgeScript, but B I G.**
+
+AntamScript is an early-stage TypeScript project from NationDex. The current repository is intentionally small, so these docs describe the implementation that exists today and avoid presenting planned features as finished features.
+
+## Current status
+
+The current runtime contains a single TypeScript entry point that logs a message to the console.
+
+```text
+AntamScript is B I G
+```
+
+The project uses Bun, TypeScript, Biome, and `discord.js`. Discord functionality is not implemented in the current source tree yet.
+
+## Get started
+
+Install [Bun](https://bun.sh/) 1.4.2 or newer, then clone the repository:
+
+```bash
+git clone https://github.com/nationdex/antamscript.git
+cd antamscript
+bun install
+```
+
+Run the project:
+
+```bash
+bun run dev
+```
+
+## Documentation
 
 <Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.dev" />
+  <Card title="Installation" href="/docs/installation" />
+  <Card title="Project structure" href="/docs/project-structure" />
+  <Card title="Development" href="/docs/development" />
+  <Card title="Current implementation" href="/docs/current-implementation" />
 </Cards>
