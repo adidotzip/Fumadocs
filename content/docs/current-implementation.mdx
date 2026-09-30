@@ -1,0 +1,43 @@
+---
+title: Current implementation
+description: A factual overview of what AntamScript currently implements.
+---
+
+# Current implementation
+
+AntamScript is currently at the foundation stage.
+
+The complete source implementation is:
+
+```ts
+console.log("AntamScript is B I G");
+```
+
+Running it produces:
+
+```text
+AntamScript is B I G
+```
+
+## What is implemented
+
+The repository currently provides:
+
+- A TypeScript entry point
+- Bun-based development and build scripts
+- Strict TypeScript configuration
+- Biome formatting and checks
+- `discord.js` as a runtime dependency
+- Apache License 2.0 licensing
+
+## What is not implemented yet
+
+The current source tree does not contain an AntamScript parser, compiler, interpreter, command framework, event framework, or Discord bot implementation.
+
+There is also no language syntax reference yet for variables, functions, loops, conditionals, commands, or other language constructs.
+
+The `discord.js` dependency shows that Discord is part of the project's dependency setup, but `src/index.ts` does not currently import or use it.
+
+## Documentation policy
+
+These docs intentionally follow the repository rather than the project's slogan. As implementation details change, update the relevant reference pages alongside the code so examples stay executable and accurate.
