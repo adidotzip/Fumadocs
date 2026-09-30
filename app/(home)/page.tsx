@@ -4,7 +4,8 @@ import { FiArrowRight } from 'react-icons/fi';
 
 export default function HomePage() {
   return (
-    <main className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden px-6 py-20">\n      <DotPattern glow className="text-white/[0.14]" />
+    <main className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden px-6 py-20">
+      <DotPattern glow className="text-black/[0.14] dark:text-white/[0.14]" />
 
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center text-center">
         <h1 className="max-w-4xl text-balance text-5xl font-semibold tracking-tight sm:text-6xl md:text-7xl">
