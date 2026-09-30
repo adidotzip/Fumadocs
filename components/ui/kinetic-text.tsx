@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { cn } from '@/lib/utils';
-
 type As = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
 
 type KineticTextProps = React.HTMLAttributes<HTMLElement> & {
@@ -25,7 +23,7 @@ export function KineticText({
   return (
     <Tag
       {...rest}
-      className={cn('flex flex-wrap font-[300]', className)}
+      className={`flex flex-wrap font-[300] ${className}`}
       style={mergedStyle}
     >
       {text.split('').map((letter, i) => (
