@@ -167,3 +167,48 @@ html > body[data-scroll-locked] {
     border-radius: 16px;
   }
 }
+
+
+@media (min-width: 768px) {
+  .docs-sidebar-brand {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    gap: 10px;
+    padding: 4px 6px 12px;
+  }
+
+  .docs-sidebar-brand-icon {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 auto;
+    border-radius: 9px;
+    object-fit: cover;
+  }
+
+  .docs-sidebar-brand-copy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .docs-sidebar-brand-name {
+    overflow: hidden;
+    color: var(--color-fd-foreground);
+    font-size: 14px;
+    font-weight: 650;
+    line-height: 18px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .docs-sidebar-brand-description {
+    overflow: hidden;
+    color: var(--color-fd-muted-foreground);
+    font-size: 11px;
+    line-height: 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
