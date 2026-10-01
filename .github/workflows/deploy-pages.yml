@@ -27,10 +27,15 @@ jobs:
         with:
           node-version: 22
 
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
       - name: Install dependencies
         run: npm install
 
       - name: Build static site
+        env:
+          NEXT_PUBLIC_SITE_URL: https://adidotzip.github.io/Fumadocs
         run: npm run build:github-pages
 
       - name: Upload Pages artifact
