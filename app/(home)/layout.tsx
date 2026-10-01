@@ -6,7 +6,7 @@ export default function Layout({ children }: LayoutProps<'/'>) {
   return (
     <HomeLayout
       {...baseOptions()}
-      themeSwitch={{ enabled: false }}
+      themeSwitch={{ enabled: true }}
       slots={{ themeSwitch: ThemeSwitch }}
     >
       {children}
