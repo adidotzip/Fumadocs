@@ -156,3 +156,27 @@ html > body[data-scroll-locked] {
 #nd-sidebar a + a {
   margin-top: 2px;
 }
+
+
+/* Compact docs navigation */
+#nd-sidebar {
+  --fd-sidebar-width: 272px;
+}
+
+#nd-sidebar a {
+  min-height: 32px;
+  padding-block: 5px;
+}
+
+#nd-sidebar p.inline-flex {
+  margin-top: 12px;
+  margin-bottom: 3px;
+}
+
+#nd-sidebar p.inline-flex:first-of-type {
+  margin-top: 6px;
+}
+
+#nd-sidebar a + a {
+  margin-top: 0;
+}
