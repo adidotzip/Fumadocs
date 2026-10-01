@@ -67,3 +67,67 @@ html > body[data-scroll-locked] {
   margin-right: 0px !important;
   --removed-body-scroll-bar-size: 0px !important;
 }
+
+
+/* Refined Glass sidebar */
+#nd-sidebar {
+  --fd-sidebar-width: 272px;
+  background: color-mix(in srgb, var(--color-fd-background) 88%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-fd-border) 72%, transparent);
+  border-radius: 18px;
+  box-shadow:
+    0 16px 40px color-mix(in srgb, black 10%, transparent),
+    inset 0 1px 0 color-mix(in srgb, white 7%, transparent);
+  backdrop-filter: blur(18px) saturate(120%);
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
+}
+
+#nd-sidebar a {
+  border-radius: 10px;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+#nd-sidebar a:hover {
+  background: color-mix(in srgb, var(--color-fd-accent) 72%, transparent);
+}
+
+#nd-sidebar a[data-active='true'] {
+  background: color-mix(in srgb, var(--color-fd-accent) 92%, transparent);
+  color: var(--color-fd-foreground);
+  font-weight: 550;
+}
+
+#nd-sidebar a:active {
+  transform: scale(0.985);
+}
+
+#nd-sidebar input {
+  border-radius: 11px;
+  border-color: color-mix(in srgb, var(--color-fd-border) 78%, transparent);
+  background: color-mix(in srgb, var(--color-fd-muted) 62%, transparent);
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+#nd-sidebar input:focus {
+  border-color: var(--color-fd-ring);
+  background: color-mix(in srgb, var(--color-fd-muted) 78%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-fd-ring) 12%, transparent);
+}
+
+@media (max-width: 767px) {
+  #nd-sidebar {
+    border-radius: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #nd-sidebar a {
+    transition: none;
+  }
+}
