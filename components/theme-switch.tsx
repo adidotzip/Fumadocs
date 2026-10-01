@@ -22,6 +22,7 @@ export function ThemeSwitch({ className, ...props }: ComponentProps<'button'>) {
   }
 
   const Icon = theme === 'light' ? Sun : MoonStar;
+  const sidebarMode = Boolean(className);
 
   return (
     <button
@@ -30,12 +31,12 @@ export function ThemeSwitch({ className, ...props }: ComponentProps<'button'>) {
       onClick={handleThemeChange}
       className={cn(
         'inline-flex items-center justify-center text-fd-muted-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fd-ring',
-        !className && 'size-8 rounded-md',
+        sidebarMode ? 'size-8 rounded-md hover:bg-fd-accent hover:text-fd-accent-foreground' : 'size-8 rounded-md',
         className,
       )}
       {...props}
     >
-      <span className="inline-flex size-6 items-center justify-center rounded-md p-1.5 transition-colors">
+      <span className="inline-flex size-6 items-center justify-center p-1 transition-colors">
         <Icon size={16} animate />
       </span>
     </button>
