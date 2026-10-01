@@ -7,11 +7,11 @@ import { MoonStar } from '@/components/animate-ui/icons/moon-star';
 import { Sun } from '@/components/animate-ui/icons/sun';
 import { cn } from '@/lib/cn';
 
-type ThemeSwitchProps = ComponentProps<'div'>;
+type ThemeSwitchProps = Omit<ComponentProps<'button'>, 'ref'>;
 
 const noop = () => () => {};
 
-export function ThemeSwitch({ className, ref: _ref, ...props }: ThemeSwitchProps) {
+export function ThemeSwitch({ className, ...props }: ThemeSwitchProps) {
   const { setTheme, resolvedTheme } = useTheme();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const theme = mounted ? resolvedTheme : null;
