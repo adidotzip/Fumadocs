@@ -1,7 +1,7 @@
 'use client';
 
 import * as Base from 'fumadocs-ui/components/sidebar/base';
-import { cn } from 'fumadocs-ui/utils/cn';
+import { cn } from '@/lib/cn';
 import { type ComponentProps, type ReactNode, useRef } from 'react';
 import { cva } from 'class-variance-authority';
 import { createPageTreeRenderer, type SidebarPageTreeComponents } from 'fumadocs-ui/components/sidebar/page-tree';
