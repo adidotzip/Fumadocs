@@ -8,7 +8,6 @@ export default function Layout({ children }: LayoutProps<'/docs'>) {
     <GlassLayout
       tree={source.getPageTree()}
       {...baseOptions()}
-      sidebar={{ collapsible: true, defaultOpenLevel: 1 }}
       slots={{ themeSwitch: ThemeSwitch }}
     >
       {children}
