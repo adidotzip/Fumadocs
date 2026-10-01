@@ -1,4 +1,5 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
+import logo from '../src/images/logo.png';
 import { appName, gitConfig } from './shared';
 
 export function baseOptions(): BaseLayoutProps {
@@ -7,7 +8,7 @@ export function baseOptions(): BaseLayoutProps {
       // JSX supported
       title: (
         <img
-          src="/images/logo.png"
+          src={logo.src}
           alt={appName}
           className="h-7 w-auto max-w-[180px] object-contain"
         />
