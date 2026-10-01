@@ -10,7 +10,7 @@ export function baseOptions(): BaseLayoutProps {
         <img
           src={logo.src}
           alt={appName}
-          className="h-7 w-auto max-w-[180px] object-contain"
+          className="h-5 w-auto max-w-[140px] object-contain"
         />
       ),
     },
