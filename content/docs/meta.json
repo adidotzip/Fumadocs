@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "index",
+    "---[Rocket]Getting Started---",
+    "installation",
+    "---[Code2]Development---",
+    "development",
+    "---[FolderTree]Project---",
+    "project-structure",
+    "current-implementation"
+  ]
+}
