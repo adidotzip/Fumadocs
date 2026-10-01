@@ -4,22 +4,26 @@ title: Project structure
 description: Understand the files in the AntamScript repository.
 ---
 
+import { File, Folder, Files } from 'fumadocs-ui/components/files';
+
 # Project structure
 
 The repository is currently a compact TypeScript project:
 
-```text
-antamscript/
-├── src/
-│   └── index.ts
-├── package.json
-├── tsconfig.json
-├── biome.json
-├── bun.lock
-├── README.md
-├── LICENSE
-└── .gitignore
-```
+<Files>
+  <Folder name="antamscript" defaultOpen>
+    <Folder name="src" defaultOpen>
+      <File name="index.ts" />
+    </Folder>
+    <File name="package.json" />
+    <File name="tsconfig.json" />
+    <File name="biome.json" />
+    <File name="bun.lock" />
+    <File name="README.md" />
+    <File name="LICENSE" />
+    <File name=".gitignore" />
+  </Folder>
+</Files>
 
 ## Source
 
