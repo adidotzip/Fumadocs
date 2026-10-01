@@ -32,7 +32,7 @@ export function CopyMarkdownButton({ markdownUrl, className }: { markdownUrl: st
 
   return (
     <button type="button" disabled={loading} aria-live="polite" onClick={copyMarkdown}
-      className={cn('inline-flex h-9 shrink-0 items-center gap-2 rounded-xl border border-fd-border bg-fd-background px-3 text-xs font-medium text-fd-foreground transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fd-ring disabled:pointer-events-none disabled:opacity-50', className)}>
+      className={cn('inline-flex h-8 min-w-[132px] shrink-0 items-center justify-center gap-1.5 rounded-md border border-fd-border bg-fd-background px-2.5 text-xs font-medium text-fd-foreground whitespace-nowrap transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fd-ring disabled:pointer-events-none disabled:opacity-50', className)}>
       {copied ? <Check size={14} animate /> : <Copy size={14} animateOnHover />}
       {copied ? 'Copied Markdown' : 'Copy Markdown'}
     </button>
