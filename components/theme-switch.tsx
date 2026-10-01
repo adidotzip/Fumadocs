@@ -8,14 +8,13 @@ import { cn } from '@/lib/cn';
 
 const noop = () => () => {};
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function ThemeSwitch({ className, ...props }: any) {
+export function ThemeSwitch({ className, ...props }: React.ComponentProps<'button'>) {
   const { setTheme, resolvedTheme } = useTheme();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const theme = mounted ? resolvedTheme : null;
-  const nextTheme = theme === 'light' ? 'dark' : 'light';
 
   function handleThemeChange() {
+    const nextTheme = theme === 'light' ? 'dark' : 'light';
     const update = () => setTheme(nextTheme);
     if (document.startViewTransition) document.startViewTransition(update);
     else update();
@@ -24,11 +23,20 @@ export function ThemeSwitch({ className, ...props }: any) {
   const Icon = theme === 'light' ? Sun : MoonStar;
 
   return (
-    <button type="button" aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+    <button
+      type="button"
+      aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
       onClick={handleThemeChange}
-      className={cn('inline-flex size-8 shrink-0 items-center justify-center rounded-md p-1.5 text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fd-ring', className)}
-      {...props}>
-      <Icon size={16} animate />
+      className={cn(
+        'inline-flex items-center justify-center text-fd-muted-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fd-ring',
+        !className && 'size-8 rounded-md',
+        className,
+      )}
+      {...props}
+    >
+      <span className="inline-flex size-6 items-center justify-center rounded-md p-1.5 transition-colors">
+        <Icon size={16} animate />
+      </span>
     </button>
   );
 }
