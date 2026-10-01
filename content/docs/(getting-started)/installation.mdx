@@ -4,6 +4,8 @@ title: Installation
 description: Set up AntamScript locally.
 ---
 
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
 # Installation
 
 AntamScript currently uses **Bun** as its JavaScript runtime and package manager.
@@ -13,20 +15,36 @@ AntamScript currently uses **Bun** as its JavaScript runtime and package manager
 - Git
 - Bun **1.4.2 or newer**
 
-Check your Bun version with:
+## Setup
+
+<Steps>
+
+<Step>
+
+### Check your Bun version
 
 ```bash
 bun --version
 ```
 
-## Clone the repository
+Bun **1.4.2 or newer** is required.
+
+</Step>
+
+<Step>
+
+### Clone the repository
 
 ```bash
 git clone https://github.com/nationdex/antamscript.git
 cd antamscript
 ```
 
-## Install dependencies
+</Step>
+
+<Step>
+
+### Install dependencies
 
 ```bash
 bun install
@@ -38,7 +56,11 @@ The project currently has one runtime dependency:
 discord.js
 ```
 
-## Run AntamScript
+</Step>
+
+<Step>
+
+### Run AntamScript
 
 Start the project in development mode:
 
@@ -57,3 +79,7 @@ You should currently see:
 ```text
 AntamScript is B I G
 ```
+
+</Step>
+
+</Steps>
