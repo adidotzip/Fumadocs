@@ -1,10 +1,11 @@
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import './global.css';
 import type { Metadata } from 'next';
+import favicon from '../src/images/favicon.png';
 
 export const metadata: Metadata = {
   icons: {
-    icon: '/images/favicon.png',
+    icon: favicon.src,
   },
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ??
