@@ -8,12 +8,28 @@ import { createPageTreeRenderer, type SidebarPageTreeComponents } from 'fumadocs
 import { createLinkItemRenderer } from 'fumadocs-ui/components/sidebar/link-item';
 import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 import { SearchTrigger } from 'fumadocs-ui/layouts/shared/slots/search-trigger';
-import { ChevronDown, Languages } from 'lucide-react';
 import { mergeRefs } from 'fumadocs-ui/utils/merge-refs';
 import { useDocsLayout } from 'fumadocs-ui/layouts/docs';
 import { LinkItem } from 'fumadocs-ui/layouts/shared';
 import { SidebarTabsDropdown } from 'fumadocs-ui/components/sidebar/tabs/dropdown';
 import { PanelLeft } from '@/components/animate-ui/icons/panel-left';
+
+
+function LanguagesIcon({ className }: { className?: string }) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="m5 8 6 6" /><path d="m4 14 6-6 2-3" /><path d="M2 5h12" /><path d="M7 2h1" /><path d="M22 22 16 10l-6 12" /><path d="M14 18h8" />
+    </svg>
+  );
+}
+
+function ChevronDownIcon({ className }: { className?: string }) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
 
 const itemVariants = cva(
   'relative flex flex-row items-center gap-2 rounded-lg p-2 text-start text-fd-muted-foreground wrap-anywhere [&_svg]:size-4 [&_svg]:shrink-0',
@@ -80,9 +96,9 @@ export function DocsSidebar({ footer, banner, collapsible = true, components, ..
           <div className="flex flex-col p-4 pt-2">
             {slots.languageSelect && (
               <slots.languageSelect.root variant="secondary" className="text-fd-muted-foreground text-start justify-start bg-fd-secondary/50 mb-2">
-                <Languages className="size-4.5" />
+                <LanguagesIcon className="size-4.5" />
                 <slots.languageSelect.text />
-                <ChevronDown className="ms-auto size-3.5" />
+                <ChevronDownIcon className="ms-auto size-3.5" />
               </slots.languageSelect.root>
             )}
             <div className="flex text-fd-muted-foreground items-center border bg-fd-secondary/50 p-0.5 pe-0 rounded-lg empty:hidden">
@@ -110,7 +126,7 @@ export function DocsSidebar({ footer, banner, collapsible = true, components, ..
             </div>
             {slots.languageSelect && (
               <slots.languageSelect.root>
-                <Languages className="size-4.5" />
+                <LanguagesIcon className="size-4.5" />
                 <slots.languageSelect.text />
               </slots.languageSelect.root>
             )}
