@@ -22,7 +22,7 @@ export function ThemeSwitch({ className, ...props }: ComponentProps<'button'>) {
   }
 
   const Icon = theme === 'light' ? Sun : MoonStar;
-  const sidebarMode = Boolean(className);
+  const glassHeaderMode = Boolean(className);
 
   return (
     <button
@@ -31,7 +31,9 @@ export function ThemeSwitch({ className, ...props }: ComponentProps<'button'>) {
       onClick={handleThemeChange}
       className={cn(
         'inline-flex items-center justify-center text-fd-muted-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fd-ring',
-        sidebarMode ? 'size-8 rounded-md hover:bg-fd-accent hover:text-fd-accent-foreground' : 'size-8 rounded-md',
+        glassHeaderMode
+          ? 'inline-flex size-10 items-center justify-center rounded-full p-0'
+          : 'size-8 rounded-md',
         className,
       )}
       {...props}
