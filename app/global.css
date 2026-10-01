@@ -180,3 +180,25 @@ html > body[data-scroll-locked] {
 #nd-sidebar a + a {
   margin-top: 0;
 }
+
+/* Keep native Fumadocs folder triggers wide enough for their collapse chevron. */
+#nd-sidebar button:not([aria-label]) {
+  width: 100%;
+  min-width: 0;
+  justify-content: flex-start;
+  text-align: left;
+  padding-inline: 10px;
+}
+
+#nd-sidebar button:not([aria-label]) > svg:last-child {
+  margin-inline-start: auto;
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+  display: block;
+}
+
+#nd-sidebar button:not([aria-label]) + div {
+  overflow: hidden;
+}
