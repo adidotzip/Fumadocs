@@ -20,15 +20,18 @@ body {
 @keyframes page-fade-in {
   from {
     opacity: 0;
+    transform: translateY(4px);
   }
 
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-main {
-  animation: page-fade-in 220ms ease-out both;
+.page-transition {
+  animation: page-fade-in 280ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: opacity, transform;
 }
 
 @keyframes dot-pattern-glow {
@@ -51,7 +54,7 @@ main {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  main {
+  .page-transition {
     animation: none;
   }
 }
