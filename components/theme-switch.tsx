@@ -1,16 +1,17 @@
 'use client';
 
 import type { ComponentProps } from 'react';
-import type { ThemeSwitchProps } from 'fumadocs-ui/layouts/shared';
 import { useTheme } from 'fumadocs-ui/provider/base';
 import { useSyncExternalStore } from 'react';
 import { MoonStar } from '@/components/animate-ui/icons/moon-star';
 import { Sun } from '@/components/animate-ui/icons/sun';
 import { cn } from '@/lib/cn';
 
+type ThemeSwitchProps = ComponentProps<'div'>;
+
 const noop = () => () => {};
 
-export function ThemeSwitch({ className, ...props }: ThemeSwitchProps) {
+export function ThemeSwitch({ className, ref: _ref, ...props }: ThemeSwitchProps) {
   const { setTheme, resolvedTheme } = useTheme();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const theme = mounted ? resolvedTheme : null;
