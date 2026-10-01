@@ -2,18 +2,27 @@
 
 import * as Base from 'fumadocs-ui/components/sidebar/base';
 import { cn } from '@/lib/cn';
-import { type ComponentProps, type ReactNode, useRef } from 'react';
+import { type ComponentProps, type ReactNode, type Ref, useRef } from 'react';
 import { cva } from 'class-variance-authority';
 import { createPageTreeRenderer, type SidebarPageTreeComponents } from 'fumadocs-ui/components/sidebar/page-tree';
 import { createLinkItemRenderer } from 'fumadocs-ui/components/sidebar/link-item';
 import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 import { SearchTrigger } from 'fumadocs-ui/layouts/shared/slots/search-trigger';
-import { mergeRefs } from 'fumadocs-ui/utils/merge-refs';
 import { useDocsLayout } from 'fumadocs-ui/layouts/docs';
 import { LinkItem } from 'fumadocs-ui/layouts/shared';
 import { SidebarTabsDropdown } from 'fumadocs-ui/components/sidebar/tabs/dropdown';
 import { PanelLeft } from '@/components/animate-ui/icons/panel-left';
 
+
+
+function mergeRefs<T>(...refs: Array<Ref<T> | undefined>) {
+  return (value: T | null) => {
+    for (const ref of refs) {
+      if (typeof ref === 'function') ref(value);
+      else if (ref) ref.current = value;
+    }
+  };
+}
 
 function LanguagesIcon({ className }: { className?: string }) {
   return (
