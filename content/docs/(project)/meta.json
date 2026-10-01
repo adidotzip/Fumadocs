@@ -1,0 +1,7 @@
+{
+  "title": "Project",
+  "icon": "FolderTree",
+  "pages": ["project-structure", "current-implementation"],
+  "collapsible": true,
+  "defaultOpen": true
+}
