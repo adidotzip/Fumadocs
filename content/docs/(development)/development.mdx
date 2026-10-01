@@ -1,0 +1,71 @@
+---
+icon: Code2
+title: Development
+description: Develop and validate AntamScript locally.
+---
+
+# Development
+
+Once the repository is installed, the available scripts are defined in `package.json`.
+
+## Development mode
+
+Use Bun's hot mode:
+
+```bash
+bun run dev
+```
+
+This runs `src/index.ts` with `--hot`.
+
+## Build
+
+Build the project into `dist`:
+
+```bash
+bun run build
+```
+
+The build command is:
+
+```text
+bun build src/index.ts --outdir dist
+```
+
+## Start
+
+Run the source entry point without development hot mode:
+
+```bash
+bun run start
+```
+
+## Format
+
+Format the repository with Biome:
+
+```bash
+bun run format
+```
+
+## Check
+
+Run Biome checks:
+
+```bash
+bun run check
+```
+
+## Type checking
+
+Run the TypeScript checker through Bun:
+
+```bash
+bun run typecheck
+```
+
+The repository uses `@ts-blank-space/tsc` for this script.
+
+## A note on the current API
+
+There is not yet a public AntamScript language API or syntax reference to document. New reference pages should be added as language features actually land in the repository.
