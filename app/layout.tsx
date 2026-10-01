@@ -19,7 +19,7 @@ export default function Layout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="flex flex-col min-h-screen" suppressHydrationWarning>
-        <RootProvider>{children}</RootProvider>
+        <RootProvider theme={{ scriptProps: { type: 'application/json' } }}>{children}</RootProvider>
       </body>
     </html>
   );
