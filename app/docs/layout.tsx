@@ -8,8 +8,7 @@ export default function Layout({ children }: LayoutProps<'/docs'>) {
     <DocsLayout
       tree={source.getPageTree()}
       {...baseOptions()}
-      themeSwitch={{ enabled: false }}
-      slots={{ themeSwitch: ThemeSwitch }}
+      themeSwitch={{ enabled: true }}
     >
       {children}
     </DocsLayout>

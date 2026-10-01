@@ -7,7 +7,7 @@ export type IconProps<T = string> = Omit<SVGMotionProps<SVGSVGElement>, 'animate
   size?: number;
   animate?: boolean | T;
   animateOnHover?: boolean | T;
-  animation?: T;
+  animation?: string;
 };
 
 type Context = { controls: LegacyAnimationControls; animation: string };
@@ -17,9 +17,9 @@ export function useAnimateIconContext() {
   return React.useContext(IconContext) ?? { controls: undefined, animation: 'default' };
 }
 
-export function getVariants<T extends Record<string, Variants>>(animations: T): T {
+export function getVariants<T extends Record<string, Variants>>(animations: T): T[keyof T] {
   const { animation } = useAnimateIconContext();
-  return (animations[animation as keyof T] ?? animations.default) as T;
+  return animations[animation as keyof T] ?? animations.default;
 }
 
 export function IconWrapper<T extends string>({
@@ -59,7 +59,7 @@ export function IconWrapper<T extends string>({
       onMouseLeave={stop}
       aria-hidden="true"
     >
-      <IconContext.Provider value={{ controls, animation: String(animation) }}>
+      <IconContext.Provider value={{ controls, animation: String(animation as string) }}>
         <Icon size={size} {...props} />
       </IconContext.Provider>
     </motion.span>

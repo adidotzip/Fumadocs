@@ -8,7 +8,8 @@ import { cn } from '@/lib/cn';
 
 const noop = () => () => {};
 
-export function ThemeSwitch({ className, ...props }: React.ComponentProps<'button'>) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function ThemeSwitch({ className, ...props }: any) {
   const { setTheme, resolvedTheme } = useTheme();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
   const theme = mounted ? resolvedTheme : null;
