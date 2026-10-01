@@ -26,7 +26,7 @@ export function ThemeSwitch({ className, ...props }: any) {
   return (
     <button type="button" aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
       onClick={handleThemeChange}
-      className={cn('inline-flex size-8 items-center justify-center rounded-full text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground', className)}
+      className={cn('inline-flex size-9 shrink-0 items-center justify-center rounded-xl text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fd-ring', className)}
       {...props}>
       <Icon size={16} animate />
     </button>
