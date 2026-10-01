@@ -131,3 +131,28 @@ html > body[data-scroll-locked] {
     transition: none;
   }
 }
+
+
+/* Sidebar hierarchy */
+#nd-sidebar > div:first-child {
+  background: transparent;
+  box-shadow: none;
+  border-color: transparent;
+}
+
+#nd-sidebar p.inline-flex {
+  margin-top: 22px;
+  margin-bottom: 7px;
+}
+
+#nd-sidebar p.inline-flex:first-of-type {
+  margin-top: 10px;
+}
+
+#nd-sidebar p.inline-flex + * {
+  margin-bottom: 10px;
+}
+
+#nd-sidebar a + a {
+  margin-top: 2px;
+}
