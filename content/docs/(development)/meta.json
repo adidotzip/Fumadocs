@@ -1,0 +1,7 @@
+{
+  "title": "Development",
+  "icon": "Code2",
+  "pages": ["development"],
+  "collapsible": true,
+  "defaultOpen": true
+}
