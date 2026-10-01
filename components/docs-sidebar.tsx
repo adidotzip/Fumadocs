@@ -123,7 +123,7 @@ export function DocsSidebar({ footer, banner, collapsible = true, components, ..
         )}
       </SidebarContent>
 
-      <Base.SidebarDrawer>
+      <Base.SidebarDrawerContent>
         <div className="flex flex-col gap-3 p-4 pb-2">
           <div className="flex text-fd-muted-foreground items-center gap-1.5">
             <div className="flex flex-1">
@@ -149,7 +149,7 @@ export function DocsSidebar({ footer, banner, collapsible = true, components, ..
         </div>
         {viewport}
         <div className="flex flex-col border-t p-4 pt-2 empty:hidden">{footer}</div>
-      </Base.SidebarDrawer>
+      </Base.SidebarDrawerContent>
     </>
   );
 }
