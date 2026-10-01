@@ -4,11 +4,19 @@ title: Development
 description: Develop and validate AntamScript locally.
 ---
 
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
 # Development
 
 Once the repository is installed, the available scripts are defined in `package.json`.
 
-## Development mode
+## Development workflow
+
+<Steps>
+
+<Step>
+
+### Development mode
 
 Use Bun's hot mode:
 
@@ -18,7 +26,11 @@ bun run dev
 
 This runs `src/index.ts` with `--hot`.
 
-## Build
+</Step>
+
+<Step>
+
+### Build
 
 Build the project into `dist`:
 
@@ -32,7 +44,11 @@ The build command is:
 bun build src/index.ts --outdir dist
 ```
 
-## Start
+</Step>
+
+<Step>
+
+### Start
 
 Run the source entry point without development hot mode:
 
@@ -40,7 +56,11 @@ Run the source entry point without development hot mode:
 bun run start
 ```
 
-## Format
+</Step>
+
+<Step>
+
+### Format
 
 Format the repository with Biome:
 
@@ -48,7 +68,11 @@ Format the repository with Biome:
 bun run format
 ```
 
-## Check
+</Step>
+
+<Step>
+
+### Check
 
 Run Biome checks:
 
@@ -56,7 +80,11 @@ Run Biome checks:
 bun run check
 ```
 
-## Type checking
+</Step>
+
+<Step>
+
+### Type checking
 
 Run the TypeScript checker through Bun:
 
@@ -65,6 +93,10 @@ bun run typecheck
 ```
 
 The repository uses `@ts-blank-space/tsc` for this script.
+
+</Step>
+
+</Steps>
 
 ## A note on the current API
 
