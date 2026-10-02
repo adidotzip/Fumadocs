@@ -31,35 +31,29 @@ export function IconWrapper<T extends string>({
   ...props
 }: IconProps<T> & { icon: React.ComponentType<IconProps<T>> }) {
   const controls = useAnimation();
-  const [active, setActive] = React.useState(Boolean(animate));
 
   React.useEffect(() => {
-    setActive(Boolean(animate));
     void controls.start(animate ? 'animate' : 'initial');
   }, [animate, controls]);
 
-  const start = () => {
-    if (animateOnHover !== undefined) {
-      setActive(true);
-      void controls.start('animate');
-    }
-  };
+  const handleHover = React.useCallback((active: boolean) => {
+    void controls.start(active ? 'animate' : 'initial');
+  }, [controls]);
 
-  const stop = () => {
-    if (animateOnHover !== undefined) {
-      setActive(false);
-      void controls.start('initial');
-    }
-  };
+  const hoverHandlers = animateOnHover !== undefined
+    ? {
+        onMouseEnter: () => handleHover(true),
+        onMouseLeave: () => handleHover(false),
+      }
+    : {};
 
   return (
     <motion.span
       className="inline-flex"
-      onMouseEnter={start}
-      onMouseLeave={stop}
+      {...hoverHandlers}
       aria-hidden="true"
     >
-      <IconContext.Provider value={{ controls, animation: String(animation as string) }}>
+      <IconContext.Provider value={{ controls, animation: String(animation) }}>
         <Icon size={size} {...props} />
       </IconContext.Provider>
     </motion.span>
