@@ -26,11 +26,11 @@ export function KineticText({
       className={`flex flex-wrap font-[300] ${className}`}
       style={mergedStyle}
     >
-      {text.split('').map((letter, i) => (
+      {Array.from(text).map((letter, i) => (
         <span
-          key={i}
+          key={`${letter}-${i}`}
           aria-hidden="true"
-          className="[-webkit-text-stroke-color:transparent] [-webkit-text-stroke-width:var(--text-stroke-width)] [transition:font-weight_0.4s,_-webkit-text-stroke-color_0.4s,_padding_0.4s] [will-change:font-weight,-webkit-text-stroke-width,padding] hover:[-webkit-text-stroke-color:currentcolor] hover:[-webkit-text-stroke-width:calc(var(--text-stroke-width)*2)] hover:[padding-inline:var(--hover-padding)] hover:font-[900] has-[+span+span:hover]:font-[400] has-[+span:hover]:[padding-inline:var(--hover-padding)] has-[+span:hover]:font-[600] [:hover+&]:[padding-inline:var(--hover-padding)] [:hover+&]:font-[600] [:hover+span+&]:font-[400]"
+          className="[-webkit-text-stroke-color:transparent] [-webkit-text-stroke-width:var(--text-stroke-width)] [transition:font-weight_0.4s,_-webkit-text-stroke-color_0.4s,_padding_0.4s] hover:[-webkit-text-stroke-color:currentcolor] hover:[-webkit-text-stroke-width:calc(var(--text-stroke-width)*2)] hover:[padding-inline:var(--hover-padding)] hover:font-[900] has-[+span+span:hover]:font-[400] has-[+span:hover]:[padding-inline:var(--hover-padding)] has-[+span:hover]:font-[600] [:hover+&]:[padding-inline:var(--hover-padding)] [:hover+&]:font-[600] [:hover+span+&]:font-[400]"
         >
           {letter === ' ' ? '\u00A0' : letter}
         </span>
