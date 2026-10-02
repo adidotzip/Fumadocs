@@ -38,10 +38,11 @@ export function DotPattern({
     let heightPx = 0;
     let lastTime = -Infinity;
     let color = 'currentColor';
+    let active = true;
 
     const resize = () => {
       const rect = parent.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       widthPx = Math.max(1, Math.ceil(rect.width));
       heightPx = Math.max(1, Math.ceil(rect.height));
 
@@ -57,7 +58,6 @@ export function DotPattern({
 
       const columns = Math.ceil(widthPx / width);
       const rows = Math.ceil(heightPx / height);
-      const count = columns * rows;
 
       for (let row = 0; row < rows; row++) {
         for (let col = 0; col < columns; col++) {
@@ -76,12 +76,11 @@ export function DotPattern({
           const phase = ((row * columns + col) * 37) % 5000;
           const progress = ((time + phase) % 3000) / 3000;
           const pulse = (Math.sin(progress * Math.PI * 2) + 1) / 2;
-          const radius = cr * (1 + pulse * 0.7);
 
           ctx.globalAlpha = 0.2 + pulse * 0.65;
           ctx.fillStyle = color;
           ctx.beginPath();
-          ctx.arc(px, py, radius, 0, Math.PI * 2);
+          ctx.arc(px, py, cr * (1 + pulse * 0.7), 0, Math.PI * 2);
           ctx.fill();
         }
       }
@@ -90,21 +89,45 @@ export function DotPattern({
     };
 
     const tick = (time: number) => {
-      if (time - lastTime >= 33) {
+      if (!active || document.hidden) {
+        animationFrame = 0;
+        return;
+      }
+
+      if (time - lastTime >= 40) {
         lastTime = time;
         draw(time);
       }
+
       animationFrame = requestAnimationFrame(tick);
     };
 
+    const setActive = (value: boolean) => {
+      active = value;
+      if (active && glow && !animationFrame) {
+        animationFrame = requestAnimationFrame(tick);
+      }
+    };
+
+    const visibilityChange = () => setActive(!document.hidden);
     const observer = new ResizeObserver(resize);
+    const intersection = new IntersectionObserver(
+      ([entry]) => setActive(entry?.isIntersecting ?? false),
+      { rootMargin: '100px' },
+    );
+
     observer.observe(parent);
+    intersection.observe(canvas);
+    document.addEventListener('visibilitychange', visibilityChange);
+
     resize();
 
     if (glow) animationFrame = requestAnimationFrame(tick);
 
     return () => {
       observer.disconnect();
+      intersection.disconnect();
+      document.removeEventListener('visibilitychange', visibilityChange);
       cancelAnimationFrame(animationFrame);
     };
   }, [width, height, x, y, cx, cy, cr, glow]);
