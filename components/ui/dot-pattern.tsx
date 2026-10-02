@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useEffect, useId, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
-interface DotPatternProps extends React.SVGProps<SVGSVGElement> {
+interface DotPatternProps extends React.CanvasHTMLAttributes<HTMLCanvasElement> {
   width?: number;
   height?: number;
   x?: number;
@@ -10,7 +10,6 @@ interface DotPatternProps extends React.SVGProps<SVGSVGElement> {
   cx?: number;
   cy?: number;
   cr?: number;
-  className?: string;
   glow?: boolean;
 }
 
@@ -26,65 +25,96 @@ export function DotPattern({
   glow = false,
   ...props
 }: DotPatternProps) {
-  const id = useId();
-  const containerRef = useRef<SVGSVGElement>(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const element = containerRef.current;
-    if (!element) return;
+    const canvas = canvasRef.current;
+    const parent = canvas?.parentElement;
+    const ctx = canvas?.getContext('2d', { alpha: true });
+    if (!canvas || !parent || !ctx) return;
 
-    const updateDimensions = () => {
-      const rect = element.getBoundingClientRect();
-      setDimensions({ width: rect.width, height: rect.height });
+    let animationFrame = 0;
+    let widthPx = 0;
+    let heightPx = 0;
+    let lastTime = -Infinity;
+    let color = 'currentColor';
+
+    const resize = () => {
+      const rect = parent.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      widthPx = Math.max(1, Math.ceil(rect.width));
+      heightPx = Math.max(1, Math.ceil(rect.height));
+
+      canvas.width = Math.ceil(widthPx * dpr);
+      canvas.height = Math.ceil(heightPx * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      color = getComputedStyle(canvas).color || 'currentColor';
+      draw();
     };
 
-    updateDimensions();
+    const draw = (time = 0) => {
+      ctx.clearRect(0, 0, widthPx, heightPx);
 
-    const observer = new ResizeObserver(updateDimensions);
-    observer.observe(element);
+      const columns = Math.ceil(widthPx / width);
+      const rows = Math.ceil(heightPx / height);
+      const count = columns * rows;
 
-    return () => observer.disconnect();
-  }, []);
+      for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < columns; col++) {
+          const px = col * width + cx + x;
+          const py = row * height + cy + y;
 
-  const columns = Math.ceil(dimensions.width / width);
-  const rows = Math.ceil(dimensions.height / height);
-  const dots = Array.from({ length: columns * rows }, (_, index) => {
-    const col = index % columns;
-    const row = Math.floor(index / columns);
+          if (!glow) {
+            ctx.fillStyle = color;
+            ctx.globalAlpha = 1;
+            ctx.beginPath();
+            ctx.arc(px, py, cr, 0, Math.PI * 2);
+            ctx.fill();
+            continue;
+          }
 
-    return {
-      x: col * width + cx + x,
-      y: row * height + cy + y,
-      delay: ((index * 37) % 5000) / 1000,
+          const phase = ((row * columns + col) * 37) % 5000;
+          const progress = ((time + phase) % 3000) / 3000;
+          const pulse = (Math.sin(progress * Math.PI * 2) + 1) / 2;
+          const radius = cr * (1 + pulse * 0.7);
+
+          ctx.globalAlpha = 0.2 + pulse * 0.65;
+          ctx.fillStyle = color;
+          ctx.beginPath();
+          ctx.arc(px, py, radius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      ctx.globalAlpha = 1;
     };
-  });
+
+    const tick = (time: number) => {
+      if (time - lastTime >= 33) {
+        lastTime = time;
+        draw(time);
+      }
+      animationFrame = requestAnimationFrame(tick);
+    };
+
+    const observer = new ResizeObserver(resize);
+    observer.observe(parent);
+    resize();
+
+    if (glow) animationFrame = requestAnimationFrame(tick);
+
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(animationFrame);
+    };
+  }, [width, height, x, y, cx, cy, cr, glow]);
 
   return (
-    <svg
-      ref={containerRef}
+    <canvas
+      ref={canvasRef}
       aria-hidden="true"
       className={`pointer-events-none absolute inset-0 h-full w-full ${className ?? ''}`}
       {...props}
-    >
-      <defs>
-        <radialGradient id={`${id}-glow`}>
-          <stop offset="0%" stopColor="currentColor" stopOpacity="1" />
-          <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-
-      {dots.map((dot) => (
-        <circle
-          key={`${dot.x}-${dot.y}`}
-          cx={dot.x}
-          cy={dot.y}
-          r={cr}
-          fill={glow ? `url(#${id}-glow)` : 'currentColor'}
-          className={glow ? 'dot-pattern-glow' : undefined}
-          style={glow ? { animationDelay: `-${dot.delay}s` } : undefined}
-        />
-      ))}
-    </svg>
+    />
   );
 }
